@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+}
+
+button {
+    width: 75px;
+    margin: 8px;
+}
+
+.results {
+    white-space: pre-line;
+    border: 3px solid green;
+    margin: auto;
+    margin-top: 10px;
+    width: 250px;
+    height: 250px;
+}

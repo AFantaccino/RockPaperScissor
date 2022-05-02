@@ -1,96 +1,86 @@
- function playerQuestion(){
-  let choice = prompt("Select between Rock, Paper and Scissor. ")
-  choice = choice.toLowerCase();  
+const rock = document.querySelector(".rock");
+rock.addEventListener("click", () => {
+    playerChoice=0;
+    computerChoice = random();
+    play()});
+    
+const paper = document.querySelector(".paper");
+paper.addEventListener("click", () => {
+    playerChoice=1
+    computerChoice = random();
+    play()});
 
-    if (choice=="rock"){
-    return playerChoice = 0;
-    }
+const scissor = document.querySelector(".scissor");
+scissor.addEventListener("click",() => {
+    playerChoice=2
+    computerChoice = random();
+    play()});
 
-    else if (choice=="paper"){
-    return    playerChoice = 1;
-    }
+const reset = document.querySelector(".reset")
+reset.addEventListener("click", () => {
+    results.textContent = ""
+    scoreplayer = 0;
+    scorecomputer = 0;
+});
 
-    else if (choice=="scissor"){
-    return    playerChoice = 2;
-    }
-}
-function computerRandom() {
-    return Math.floor(Math.random() * 3)
-}
+const results = document.querySelector(".results");
+
+let random = () => Math.floor(Math.random() * 3);
+let computerChoice = 0;
+let scoreplayer = 0;
+let scorecomputer = 0;
 
 function play(){
-    
+
     switch(playerChoice){
         
     case 0:
         if (computerChoice == 2){
             ++scoreplayer;
-            console.log(`Rock vs Scissor. You WIN! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent += `Rock vs Scissor. You WIN! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         else if (computerChoice == 1){
             ++scorecomputer;
-            console.log(`Rock vs Paper. You LOSE! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent += `Rock vs Paper. You LOSE! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         else if (playerChoice == 0 && computerChoice == 0){
-            console.log(`Rock vs Rock. TIE! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent +=  `Rock vs Rock. TIE! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         break;
 
     case 1:
         if (computerChoice == 0){
             ++scoreplayer;
-            console.log(`Paper vs Rock. You WIN! ${scoreplayer} - ${scorecomputer}`)    
+            results.textContent += `Paper vs Rock. You WIN! ${scoreplayer} - ${scorecomputer}\r\n` 
             }
         else if (computerChoice == 2){
             ++scorecomputer;
-            console.log(`Paper vs Scissor. You LOSE! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent += `Paper vs Scissor. You LOSE! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         else if (computerChoice == 1){
-            console.log(`Paper vs Paper. TIE! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent += `Paper vs Paper. TIE! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         break;
     
     case 2:
         if (playerChoice == 2 && computerChoice == 1){
             ++scoreplayer;
-            console.log(`Scissor vs Paper. You WIN! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent += `Scissor vs Paper. You WIN! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         else if (playerChoice == 2 && computerChoice == 0){
             ++scorecomputer;
-            console.log(`Scissor vs Rock. You LOSE! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent += `Scissor vs Rock. You LOSE! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         else if (playerChoice == 2 && computerChoice == 2){
-            console.log(`Scissor vs Scissor. TIE! ${scoreplayer} - ${scorecomputer}`)
+            results.textContent += `Scissor vs Scissor. TIE! ${scoreplayer} - ${scorecomputer}\r\n`
         }
         break;
+    }
+
+    if (scoreplayer == 5){
+        results.textContent += "You WIN!"
+    }
+    else if (scorecomputer == 5){
+        results.textContent += "You LOSE!"
+    }
 }
-
-}
-
-let playerChoice = 0;
-let computerChoice = 0;
-let scoreplayer = 0;
-let scorecomputer = 0;
-
-for (let i = 0; i<5; i++){   
-    computerChoice = computerRandom()
-    playerChoice = playerQuestion()
-    play();
-}
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
